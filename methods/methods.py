@@ -19,7 +19,7 @@ def difference_date(dateStart, dateEnd):
     return int(days)
   
 def get_data(id):
-    url_request = "http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/"+str(id)+"/days/15?token=Put_your_Token"
+    url_request = "http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/"+str(id)+"/days/15?token=29a504648a01a5e4ca3eee5c9042cede"
     responseJson = require.api.get(url_request).json()
     return responseJson['data']
 
@@ -38,8 +38,7 @@ def save_data(response,id,days = 7):
         rain_precipitation= value_rain_precipitation)
         db_session.add(data_commit)
         db_session.commit()
-        print("Cadastro",(i+1),"concluídos")
-    return "\nCadastro ok\n"
+        
 
 def discovering_index(data, date):
     for i in range(0,len(data)):
