@@ -19,7 +19,7 @@ def difference_date(dateStart, dateEnd):
     return int(days)
   
 def get_data(id):
-    url_request = "http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/"+str(id)+"/days/15?token=29a504648a01a5e4ca3eee5c9042cede"
+    url_request = "http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/"+str(id)+"/days/15?token=Put_your_token"
     responseJson = require.api.get(url_request).json()
     return responseJson['data']
 
