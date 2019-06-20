@@ -5,10 +5,11 @@ from flask_sqlalchemy import SQLAlchemy
 from flask_marshmallow import Marshmallow
 from db.db import db_session 
 from models.dataModel import weather_table
+from models.token import *
 
 
 def get_id_city(city_name="São Paulo"):
-    url_request = "http://apiadvisor.climatempo.com.br/api/v1/locale/city?name="+cityName+"&token=Put_your_Token"
+    url_request = "http://apiadvisor.climatempo.com.br/api/v1/locale/city?name="+cityName+"&token="+str(token)
     response = require.api.get(url_request).json()
     return response[0]['id']
 
@@ -19,7 +20,7 @@ def difference_date(dateStart, dateEnd):
     return int(days)
   
 def get_data(id):
-    url_request = "http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/"+str(id)+"/days/15?token=29a504648a01a5e4ca3eee5c9042cede"
+    url_request = "http://apiadvisor.climatempo.com.br/api/v1/forecast/locale/"+str(id)+"/days/15?token="+str(token)
     responseJson = require.api.get(url_request).json()
     return responseJson['data']
 
@@ -45,12 +46,15 @@ def discovering_index(data, date):
         if data[i]['sample_date'] == date:
             return int(i)
 
-def checker(id, date_initial):
+def checker(id, date_initial,date_end):
     checking_id_city = weather_table.query.filter_by(city_id = id).first()
     checking_date_initial = weather_table.query.filter_by(sample_date = date_initial).first()
+    checking_date_end = weather_table.query.filter_by(sample_date = date_end).first()
     if checking_id_city == None:
         return False
     if checking_date_initial == None:
+        return False
+    if checking_date_end == None:
         return False
     return True
 
