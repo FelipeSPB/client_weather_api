@@ -21,7 +21,7 @@ def config_token():
 def config_run_server():
     Path('config/run_server.bat').touch()
     write = Path('./config/run_server.bat')
-    write.write_text('cd../api/\npython app.py')
+    write.write_text('cd api/\npython app.py')
 
 if __name__ == '__main__':
     creating_folder()
