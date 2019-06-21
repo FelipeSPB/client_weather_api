@@ -36,8 +36,8 @@ API CONFIG MENU\n
         
         
     def discovering_id_city(self):
-        token = input('digite seu token da API Climatempo (ex: ID): ')
-        cityName = str(input("Digite o nome da cidade "))
+        token = input('Type your token of API Climatempo without the double quotes (ex: ID): ')
+        cityName = str(input("Type the city that you want to have the id "))
         url_request = "http://apiadvisor.climatempo.com.br/api/v1/locale/city?name="+cityName+"&token="+str(token)
         response = require.api.get(url_request).json()
         print("id: ",response[0]['id'],"\n")
