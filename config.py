@@ -14,7 +14,7 @@ def creating_command_install_requirements():
 
 def config_token():
     Path('./api/models/token.py').touch()
-    token = input('digite seu token da API Climatempo em aspas duplas (ex: "seu_id"): ')
+    token = input('Type your token of API Climatempo in double quotes (ex: "seu_id"): ')
     write = Path('./api/models/token.py')
     write.write_text('token = {}\ntoken=str(token)'.format(token))
 
