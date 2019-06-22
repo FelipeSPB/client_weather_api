@@ -15,7 +15,7 @@ class Menu:
         print("""
 API CONFIG MENU\n
 1. Configure Environment
-3. Discovering Id City
+2. Discovering Id City
 3. Quit
 """)
 
