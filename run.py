@@ -1,7 +1,7 @@
 from pathlib import Path
 import os
 import sys
-import requests as require
+
 
 class Menu:
     def __init__(self):
@@ -36,6 +36,7 @@ API CONFIG MENU\n
         
         
     def discovering_id_city(self):
+        import requests as require
         token = input('Type your token of API Climatempo without the double quotes (ex: ID): ')
         cityName = str(input("Type the city that you want to have the id: "))
         url_request = "http://apiadvisor.climatempo.com.br/api/v1/locale/city?name="+cityName+"&token="+str(token)
